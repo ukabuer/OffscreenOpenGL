@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.11)
+cmake_minimum_required(VERSION 3.10)
 
 project(
     OffscreenOpenGL
@@ -22,3 +22,8 @@ target_link_libraries(
     OpenGL::EGL
     glad
 )
+
+add_executable(triangle src/triangle.cpp)
+target_include_directories(triangle PRIVATE src)
+target_link_libraries(triangle PRIVATE OpenGL::EGL glad -static-libstdc++)
+target_compile_features(triangle PRIVATE cxx_std_14)
